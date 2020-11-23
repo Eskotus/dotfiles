@@ -27,3 +27,6 @@ alias docks="docker-machine ls"
 # Aliases for Docker listings
 alias docl=~/Projects/scripts/docker-container-list
 alias doil=~/Projects/scripts/docker-image-list
+
+# Alias for chrome
+alias chrome="open -a 'Google Chrome'"

@@ -16,13 +16,15 @@ git clone https://github.com/Eskotus/dotfiles.git ~/.dotfiles
 
 ´´´
 cd .dotfiles
-brew bundle
+brew bundle # installs everything listed in Brewfile
 ´´´
 
 ## Run RCM
 
+Makes symlinks of all the files in this project.
+
 ´´´
-rcup rcrc
+rcup rcrc # excludes certain files from rcup
 rcup -f
 ´´´
 
@@ -51,3 +53,16 @@ Dotfiles for sensible OS X life. Heavily influenced by
 https://github.com/mathiasbynens/dotfiles.
 
 Instructions copied and altered from [SirIle's blog](http://sirile.github.io/2015/01/26/setting-up-mac.html)
+
+## Troubleshooting
+
+These files might brake your terminal after bigger updates. In that case follow these steps: 
+
+* Delete all the symlinks created from this folder to get your terminal reset to default
+* Update CLT (Command Line Tools)
+´´´
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
+´´´
+* Run RCM part again
+
