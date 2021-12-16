@@ -20,3 +20,14 @@ export MANPAGER='less -X';
 export GREP_OPTIONS='--color=auto';
 
 export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
+
+for version in `ls -t /usr/local/Cellar/openssl@1.1/`; do
+     export OPENSSL_DIR=/usr/local/Cellar/openssl@1.1/$version
+     break
+done
+
+# Go development
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
