@@ -1,5 +1,3 @@
-export PATH="$HOME/bin:$PATH";
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -42,15 +40,27 @@ fi;
 # Add completion to aws
 complete -C aws_completer aws
 
+# Nvm settings
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+[ -x "$(command -v npm)" ] && export NODE_PATH=`npm root -g`
+
 # RBEnv settings
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # PYEnv settings
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then 
+	eval "$(pyenv init --path)";
+	if [ -n "$BASH_VERSION" ]; then 
+		eval "$(pyenv init -)";
+	fi;
+	eval "$(pyenv virtualenv-init -)";
+
+fi;
 
 # JEnv settings
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # DVM settings
 [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
-
