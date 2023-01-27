@@ -160,3 +160,12 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[user]
+	name = Eero Saikku
+	email = eero.saikku@ubisecure.com
+[credential]
+	helper = osxkeychain
+    st = "status -u"
+    up = "!git remote update -p; git merge --ff-only @{u}"
+[pull]
+	rebase = false
